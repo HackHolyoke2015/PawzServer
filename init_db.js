@@ -52,6 +52,10 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             }
             stmt.finalize();
 
+            db.each("SELECT id, name, imageUrl FROM " + table_name, function(err, row) {
+                console.log(row.id + ": " + row.name + ", " + row.imageUrl);
+            });
+
         }
         catch (ex) {
             console.log("ERROR: JSON parse - " + err);
@@ -70,9 +74,7 @@ db.serialize(function() {
   
   
 
-  db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
-      console.log(row.id + ": " + row.info);
-  });
+  
 
   console.log("Table " + table_name + " initialized!");
 
