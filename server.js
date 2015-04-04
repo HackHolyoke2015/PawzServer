@@ -2,7 +2,7 @@ var express = require("express"),
 	app = express(),
 	path = require("path");
 
-var htmlPath = '/PawsClient/html';
+var htmlPath = '/PawzClient/html';
 
 app.get('/',function(req,res){
 	console.log("Getting Index page");
