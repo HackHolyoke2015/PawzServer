@@ -4,6 +4,10 @@ var db = new sqlite3.Database('./database_name.db');
 
 var table_name = "pet_info";
 
-db.each("SELECT rowid AS id, name, imageUrl FROM " + table_name, function(err, row) {
-    console.log(row.id + ": " + row.name + ", " + row.imageUrl);
-});
+var db = new sqlite3.Database(file);  
+db.all("SELECT first_name,last_name FROM " + pet_info, function(err, rows) {  
+        rows.forEach(function (row) {  
+            console.log(row.first_name, row.last_name);  
+        })  
+    });   
+db.close();
