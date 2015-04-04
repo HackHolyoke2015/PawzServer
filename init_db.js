@@ -40,7 +40,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             //var pet = data["mockdata"]["pets"][0];
             //console.log(pet);
             
-            var stmt = db.prepare("INSERT INTO " + table_name + "(name,imageUrl) VALUES (?,?,?)");
+            var stmt = db.prepare("INSERT INTO " + table_name + "(name,imageUrl) VALUES (?,?)");
             for (var i = 0; i < 10; i++) {
                 pet = pets[i];
                 id = pet.id;
