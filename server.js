@@ -12,7 +12,6 @@ var currentIndex = 0;
 // 	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
 // 	//__dirname : It will resolve to your project folder.
 // });
-app.param('id', Number);
 
 app.get('/about',function(req,res){
 	console.log("Getting About page");
@@ -86,7 +85,7 @@ app.get('/testPet',function(req,res){
 
 app.get('/pet/:id', function(req, res){
 	var id = req.params.id;
-	console.log(id);
+	console.log(id[0] + " " + id[1]);
 
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting Pet details");
