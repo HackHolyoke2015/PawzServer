@@ -97,7 +97,7 @@ app.get('/pet/:id', function(req, res){
 	var pet = {};
 	
 
-	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE name=" + name, function(err, rows) {
+	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE name=\"" + name + "\"", function(err, rows) {
 		console.log("SELECT");
 
 		rows.forEach(function (row) {  
