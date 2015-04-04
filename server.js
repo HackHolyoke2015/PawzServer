@@ -1,8 +1,8 @@
 var express = require("express"),
 	app = express(),
 	path = require("path"),
-	sqlite3	= require('sqlite3').verbose(),
-	db = new sqlite3.Database('./records.db');
+	sqlite3	= require('sqlite3').verbose();
+	//db = new sqlite3.Database('./records.db');
 
 var table_name = "pet_info";
 var htmlPath = '/PawzClient/html';
@@ -24,6 +24,7 @@ app.get('/sitemap',function(req,res){
 });
 
 app.get('/images',function(req, res){
+	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
 
 	var json;
