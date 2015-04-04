@@ -7,7 +7,8 @@ var obj = JSON.parse(fs.readFileSync('MockData.json', 'utf8'));
 // Write the callback function
 function handleFile(err, data) {
   if (err) throw err
-    obj = JSON.parse(data)
+    
+  obj = JSON.parse(data)
 
   console.log(obj);
 
