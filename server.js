@@ -31,16 +31,17 @@ app.get('/images',function(req, res){
 	var i = 0;
 	db.all("SELECT imageUrl FROM " + table_name, function(err, rows) {  
 		rows.forEach(function (row) {  
-		    console.log(row.imageUrl);
+		    //console.log(row.imageUrl);
 		    images[i] = row.imageUrl;
 		    i++;
-		    console.log("Url added to array");
+		    //console.log("Url added to array");
 		});
 		json = JSON.stringify(rows);
 	});
+	console.log(json.toString());
+
 	res.type('text/plain');
   	res.send(json);
-  	console.log(json);
 
 	db.close();
 });
