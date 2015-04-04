@@ -38,11 +38,11 @@ app.get('/images',function(req, res){
 		});
 		json = JSON.stringify(rows);
 	});
+	res.type('text/plain');
+  	res.send(json);
+  	console.log(json);
 
 	db.close();
-	
-	console.log(json);
-
 });
 
 
