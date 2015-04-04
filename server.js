@@ -53,6 +53,11 @@ app.get('/images',function(req, res){
 	db.close();
 });
 
+app.get('/testPets',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + htmlPath + '/testPets.html'));
+});
+
 app.get('/pets',function(req, res){
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
