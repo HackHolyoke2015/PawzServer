@@ -12,6 +12,7 @@ var currentIndex = 0;
 // 	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
 // 	//__dirname : It will resolve to your project folder.
 // });
+app.param('id', Number);
 
 app.get('/about',function(req,res){
 	console.log("Getting About page");
@@ -83,17 +84,17 @@ app.get('/testPet',function(req,res){
 	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
 });
 
-app.param('id', Number);
-
 app.get('/pet/:id', function(req, res){
+	var id = req.params.id;
+	console.log(id);
+
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting Pet details");
 
 	var json;
 	var pets = [];
 	var pet = {};
-	var id = req.params.id;
-	console.log(id);
+	
 
 	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + id, function(err, rows) {
 		console.log("SELECT");
