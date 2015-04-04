@@ -9,13 +9,15 @@ var json;
 var table_name = "user_info";
 
 db.serialize(function() {
-
+  console.log("Database Serialization Initialized");
+  
   db.run("CREATE TABLE if not exists " + table_name + " (info TEXT)");
   var stmt = db.prepare("INSERT INTO " + table_name + " VALUES (?)");
   for (var i = 0; i < 10; i++) {
       stmt.run("Ipsum " + i);
   }
   stmt.finalize();
+  console.log("Row inserted");
 
   db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
       console.log(row.id + ": " + row.info);
