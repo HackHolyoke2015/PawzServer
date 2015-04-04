@@ -78,7 +78,7 @@ app.get('/main.js',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
 });
 
-app.get('/testPet/:id',function(req,res){
+app.get('/testPet?=id:id',function(req,res){
 	console.log("Getting Pet");
 	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
 });
