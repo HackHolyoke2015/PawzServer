@@ -85,7 +85,8 @@ app.get('/testPet',function(req,res){
 
 app.get('/pet/:id', function(req, res){
 	var id = req.params.id;
-	console.log(id[0] + " " + id[1]);
+	var str = id.split(":");
+	console.log(str[0] + " " + str[1]);
 
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting Pet details");
@@ -95,7 +96,7 @@ app.get('/pet/:id', function(req, res){
 	var pet = {};
 	
 
-	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + id, function(err, rows) {
+	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE name =" + str, function(err, rows) {
 		console.log("SELECT");
 
 		rows.forEach(function (row) {  
