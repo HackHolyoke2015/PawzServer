@@ -62,27 +62,18 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
         }
     }
     console.log("JSON initialized!");
+
+    db.close(function() {
+      console.log("Database Closed");
+    });
 });
 
 db.serialize(function() {
-
-
   console.log("Database Serialization Initializing...");
 
-  
-
-  
-  
-
-  
-
-  console.log("Table " + table_name + " initialized!");
-
-  
+  console.log("Table " + table_name + " initialized!");  
 });
 
 
 
-db.close(function() {
-  console.log("Database Closed");
-});
+
