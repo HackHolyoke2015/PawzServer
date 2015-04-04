@@ -110,7 +110,7 @@ app.get('/user/:id', function(req, res){
 
 app.get('/currentIndex',function(req, res){
 	console.log("Getting currentIndex");
-	var json = JSON.stringify({ index: currentIndex}});
+	var json = JSON.stringify({ index: currentIndex});
 	console.log(json);
 
 	res.type('text/plain');
