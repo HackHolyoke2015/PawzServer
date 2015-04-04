@@ -83,16 +83,18 @@ app.get('/pet/:id', function(req, res){
 	console.log("Getting images");
 
 	var json;
+	var pets = [];
 	var pet = {};
 	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + req.params.id, function(err, rows) {  
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
 		    pet.name = pet.name;
 		    pet.imageUrl = row.imageUrl;
+		    pets[0] = pet;
 		    //console.log("Url added to array");
 		});
-		json = JSON.stringify(pet);
-		console.log(pet.toString());
+		json = JSON.stringify(pets);
+		console.log(pets.toString());
 		console.log(json);
 
 		res.type('text/plain');
@@ -113,10 +115,10 @@ app.get('/currentIndex',function(req, res){
 
 app.get('/pets',function(req, res){
 	var db = new sqlite3.Database('./records.db');
-	console.log("Getting images");
+	console.log("Getting pets");
 
 	var json;
-	var images = [];
+	var pets = [];
 	var i = 0;
 	var pet = {};
 	db.all("SELECT name, imageUrl FROM " + table_name, function(err, rows) {  
@@ -124,7 +126,7 @@ app.get('/pets',function(req, res){
 		    //console.log(row.imageUrl);
 		    pet.name = pet.name;
 		    pet.imageUrl = row.imageUrl;
-		    images[i] = pet;
+		    pets[i] = pet;
 		    i++;
 		    //console.log("Url added to array");
 		});
