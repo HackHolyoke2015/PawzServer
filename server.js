@@ -83,16 +83,18 @@ app.get('/testPet',function(req,res){
 	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
 });
 
+app.param('id', Number);
+
 app.get('/pet/:id', function(req, res){
 	var db = new sqlite3.Database('./records.db');
-	console.log("Getting pet");
+	console.log("Getting Pet details");
 
 	var json;
 	var pets = [];
 	var pet = {};
 	var id = req.params.id;
 	console.log(id);
-	
+
 	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + id, function(err, rows) {
 		console.log("SELECT");
 
