@@ -16,7 +16,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             console.log("JSON loaded successfully");
             var parsed = JSON.parse(data);
             console.log(parsed);
-            var pet = data{"mockdata"}["pets"][0];
+            var pet = data["mockdata"]["pets"][0];
             console.log(pet);
 
 	    console.log(data);
