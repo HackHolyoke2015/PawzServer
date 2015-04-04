@@ -37,9 +37,9 @@ app.get('/images',function(req, res){
 		    //console.log("Url added to array");
 		});
 		json = JSON.stringify(rows);
+		console.log(rows.toString());
 	});
-	console.log(rows.toString());
-
+	
 	res.type('text/plain');
   	res.send(json);
 
