@@ -85,19 +85,26 @@ app.get('/testPet',function(req,res){
 
 app.get('/pet/:id', function(req, res){
 	var db = new sqlite3.Database('./records.db');
-	console.log("Getting images");
+	console.log("Getting pet");
 
 	var json;
 	var pets = [];
 	var pet = {};
-	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + req.params.id, function(err, rows) {  
+	var id = req.params.id;
+	console.log(id);
+	
+	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + id, function(err, rows) {
+		console.log("SELECT");
+
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
 		    pet.name = row.name;
 		    pet.imageUrl = row.imageUrl;
 		    pets[0] = pet;
 		    //console.log("Url added to array");
+		    console.log("For eached");
 		});
+
 		json = JSON.stringify(pets);
 		console.log(pets.toString());
 		console.log(json);
