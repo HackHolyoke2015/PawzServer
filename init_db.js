@@ -70,6 +70,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
 db.serialize(function() {
   console.log("Database Serialization Initializing...");
+  db.run("DROP TABLE IF EXISTS " + table_name);
   db.run("CREATE TABLE " + table_name + " (name TEXT, imageUrl TEXT)");
   console.log("Table " + table_name + " initialized!");  
 });
