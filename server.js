@@ -78,6 +78,11 @@ app.get('/main.js',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
 });
 
+app.get('/testPet/:id',function(req,res){
+	console.log("Getting Pet");
+	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
+});
+
 app.get('/pet/:id', function(req, res){
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
