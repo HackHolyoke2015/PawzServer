@@ -38,7 +38,7 @@ app.get('/images',function(req, res){
 		});
 		json = JSON.stringify(rows);
 	});
-	console.log(json.toString());
+	console.log(rows.toString());
 
 	res.type('text/plain');
   	res.send(json);
