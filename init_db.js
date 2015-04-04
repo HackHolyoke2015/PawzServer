@@ -44,7 +44,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
           console.log("ERROR: JSON parse - " + err);
       }
   }
-  console.log("JSON initialized!");\
+  console.log("JSON initialized!");
 
   db.serialize(function() {
     console.log("Database Serialization Initializing...");
