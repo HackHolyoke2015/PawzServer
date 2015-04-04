@@ -85,7 +85,7 @@ app.get('/testPet',function(req,res){
 
 app.get('/pet/:id', function(req, res){
 	var id = req.params.id;
-	var str = id.split(":");
+	var str = id.split("=");
 	console.log(str[0] + " " + str[1]);
 
 	var db = new sqlite3.Database('./records.db');
