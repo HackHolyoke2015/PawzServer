@@ -59,7 +59,12 @@ app.get('/testPets',function(req,res){
 });
 
 app.get('/',function(req,res){
-	console.log("Getting Test page");
+	console.log("Getting home page");
+	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
+});
+
+app.get('pawz_home.html',function(req,res){
+	console.log("Getting home page");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
 });
 
