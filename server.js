@@ -6,7 +6,7 @@ var express = require("express"),
 
 var table_name = "pet_info";
 var htmlPath = '/PawzClient/html';
-
+var currentIndex = 0;
 // app.get('/',function(req,res){
 // 	console.log("Getting Index page");
 // 	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
@@ -64,20 +64,52 @@ app.get('/',function(req,res){
 });
 
 app.get('/jquery.min.js',function(req,res){
-	console.log("Getting Test page");
+	console.log("Getting jquery");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/jquery-1.11.2.min.js'));
 });
 
 app.get('/paws.css',function(req,res){
-	console.log("Getting Test page");
+	console.log("Getting paws.css");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/paws.css'));
 });
 
 app.get('/main.js',function(req,res){
-	console.log("Getting Test page");
+	console.log("Getting main.js");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
 });
 
+app.get('/pet', function(req, res){
+	var db = new sqlite3.Database('./records.db');
+	console.log("Getting images");
+
+	var json;
+	var pet = {};
+	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + currentIndex, function(err, rows) {  
+		rows.forEach(function (row) {  
+		    //console.log(row.imageUrl);
+		    pet.name = pet.name;
+		    pet.imageUrl = row.imageUrl;
+		    //console.log("Url added to array");
+		});
+		json = JSON.stringify(pet);
+		console.log(pet.toString());
+		console.log(json);
+
+		res.type('text/plain');
+  		res.send(json);
+	});
+
+	db.close();
+});
+
+app.get('/user/:id', function(req, res){
+  res.send('user ' + req.params.id);
+});
+
+app.get('/currentIndex',function(req, res){
+	console.log("Getting currentIndex");
+	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
+});
 
 app.get('/pets',function(req, res){
 	var db = new sqlite3.Database('./records.db');
