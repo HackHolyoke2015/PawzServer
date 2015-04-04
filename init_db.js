@@ -17,8 +17,10 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             console.log(json.data);
 
             var mockdata = json.mockdata;
-
             console.log(mockdata);
+
+            var pets = mockdata.pets;
+            console.log(pets);
 
             //var pet = data["mockdata"]["pets"][0];
             //console.log(pet);
