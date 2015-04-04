@@ -4,10 +4,9 @@ var db = new sqlite3.Database('./records.db');
 
 var table_name = "pet_info";
 
-var db = new sqlite3.Database(file);  
-db.all("SELECT first_name,last_name FROM " + pet_info, function(err, rows) {  
+db.all("SELECT name,imageUrl FROM " + pet_info, function(err, rows) {  
         rows.forEach(function (row) {  
-            console.log(row.first_name, row.last_name);  
+            console.log(row.name, row.imageUrl);  
         })  
     });   
 db.close();
