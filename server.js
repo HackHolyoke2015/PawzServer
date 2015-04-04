@@ -83,6 +83,11 @@ app.get('/testPet',function(req,res){
 	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
 });
 
+app.get('/petDetails',function(req,res){
+	console.log("Getting Pet Details");
+	res.sendFile(path.join(__dirname + htmlPath + '/blooptemplet.html'));
+});
+
 app.get('/pet/:id', function(req, res){
 	var id = req.params.id;
 	var str = id.split("=");
