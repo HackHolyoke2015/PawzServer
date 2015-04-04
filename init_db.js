@@ -52,8 +52,8 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             }
             stmt.finalize();
 
-            db.each("SELECT rowid AS id, name, imageUrl FROM " + table_name, function(err, row) {
-                console.log(row.id + ": " + row.name + ", " + row.imageUrl);
+            db.each("SELECT rowid AS rowid, name, imageUrl FROM " + table_name, function(err, row) {
+                console.log(row.rowid + ": " + row.name + ", " + row.imageUrl);
             });
 
         }
