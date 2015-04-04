@@ -52,7 +52,7 @@ db.serialize(function() {
 
   db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
   var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
-  for (var i = 0; i < pets.length; i++) {
+  for (var i = 0; i < 10; i++) {
       pet = pets[i];
       id = pet.id;
       name = pet.name;
