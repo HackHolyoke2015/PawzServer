@@ -39,12 +39,11 @@ app.get('/images',function(req, res){
 		});
 		json = JSON.stringify(rows);
 		console.log(rows.toString());
+		console.log(json);
+
+		res.type('text/plain');
+  		res.send(json);
 	});
-
-	console.log(json);
-
-	res.type('text/plain');
-  	res.send(json);
 
 	db.close();
 });
