@@ -88,7 +88,7 @@ app.get('/pet/:id', function(req, res){
 	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + req.params.id, function(err, rows) {  
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
-		    pet.name = pet.name;
+		    pet.name = row.name;
 		    pet.imageUrl = row.imageUrl;
 		    pets[0] = pet;
 		    //console.log("Url added to array");
@@ -124,7 +124,7 @@ app.get('/pets',function(req, res){
 	db.all("SELECT name, imageUrl FROM " + table_name, function(err, rows) {  
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
-		    pet.name = pet.name;
+		    pet.name = row.name;
 		    pet.imageUrl = row.imageUrl;
 		    pets[i] = pet;
 		    i++;
