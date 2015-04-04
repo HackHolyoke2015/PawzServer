@@ -2,6 +2,7 @@
 var sqlite3	= require('sqlite3').verbose();
 var db = new sqlite3.Database('./database_name.db');
 
+var table_name = "pet_info";
 
 db.each("SELECT rowid AS id, name, imageUrl FROM " + table_name, function(err, row) {
     console.log(row.id + ": " + row.name + ", " + row.imageUrl);
