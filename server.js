@@ -20,7 +20,7 @@ app.get('/about',function(req,res){
 
 app.get('/sitemap',function(req,res){
 	console.log("Getting Sitemap page");
-	res.sendFile(path.join(__dirname + htmlPath +'/sitemap.html'));
+	res.sendFile(path.join(__dirname + htmlPath + '/sitemap.html'));
 });
 
 app.get('/images',function(req, res){
@@ -41,7 +41,7 @@ app.get('/images',function(req, res){
 
 	console.log(json);
 
-}
+});
 
 app.listen(80);
 
