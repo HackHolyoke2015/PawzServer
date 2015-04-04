@@ -88,6 +88,11 @@ app.get('/petDetails',function(req,res){
 	res.sendFile(path.join(__dirname + htmlPath + '/blooptemplet.html'));
 });
 
+app.get('/boilerplate.css',function(req,res){
+	console.log("Getting Boilerplate");
+	res.sendFile(path.join(__dirname + htmlPath + '/boilerplate.css'));
+});
+
 app.get('/pet/:id', function(req, res){
 	var id = req.params.id;
 	var str = id.split("=");
