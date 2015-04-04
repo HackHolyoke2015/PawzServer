@@ -46,13 +46,13 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
                 id = pet.id;
                 name = pet.name;
                 url = pet.url;
-                console.log(i + ": id: " + id + ", name: " + ", url: " + url);
+                console.log(i + ": id: " + id + ", name: " + name + ", url: " + url);
                 stmt.run(id, name, url);
                 console.log("Row inserted");
             }
             stmt.finalize();
 
-            db.each("SELECT id, name, imageUrl FROM " + table_name, function(err, row) {
+            db.each("SELECT rowid AS id, name, imageUrl FROM " + table_name, function(err, row) {
                 console.log(row.id + ": " + row.name + ", " + row.imageUrl);
             });
 
