@@ -21,10 +21,9 @@ db.serialize(function() {
       console.log(row.id + ": " + row.info);
   });
 
-  console.log("Table " + table_name + " initialized")
-});
+  console.log("Table " + table_name + " initialized");
 
-fs.readFile('./MockData.json', 'utf8', function (err, data) {
+  fs.readFile('./MockData.json', 'utf8', function (err, data) {
     if (err) {
         console.log("ERROR: JSON load - " + err);
         throw err;
@@ -62,5 +61,8 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
     }
 });
+});
+
+
 
 db.close();
