@@ -2,7 +2,7 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('records.db');
 var check;
 var fs = require('fs');
-var obj = JSON.parse(fs.readFileSync('MockData', 'utf8'));
+var obj = JSON.parse(fs.readFileSync('MockData.json', 'utf8'));
 
 // Write the callback function
 function handleFile(err, data) {
