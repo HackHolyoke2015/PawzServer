@@ -39,11 +39,13 @@ app.get('/images',function(req, res){
 		json = JSON.stringify(rows);
 	});
 
+	db.close();
+	
 	console.log(json);
 
 });
 
-db.close();
+
 
 app.listen(80);
 
