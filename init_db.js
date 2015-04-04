@@ -40,20 +40,20 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
             //var pet = data["mockdata"]["pets"][0];
             //console.log(pet);
             
-            var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
+            var stmt = db.prepare("INSERT INTO " + table_name + "(name,imageUrl) VALUES (?,?,?)");
             for (var i = 0; i < 10; i++) {
                 pet = pets[i];
                 id = pet.id;
                 name = pet.name;
                 url = pet.url;
-                console.log(i + ": id: " + id + ", name: " + name + ", url: " + url);
-                stmt.run(id, name, url);
+                console.log("name: " + name + ", url: " + url);
+                stmt.run(name, url);
                 console.log("Row inserted");
             }
             stmt.finalize();
 
-            db.each("SELECT rowid AS rowid, name, imageUrl FROM " + table_name, function(err, row) {
-                console.log(row.rowid + ": " + row.name + ", " + row.imageUrl);
+            db.each("SELECT rowid AS id, name, imageUrl FROM " + table_name, function(err, row) {
+                console.log(row.id + ": " + row.name + ", " + row.imageUrl);
             });
 
         }
@@ -70,7 +70,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
 db.serialize(function() {
   console.log("Database Serialization Initializing...");
-  db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
+  db.run("CREATE TABLE if not exists " + table_name + " (name TEXT, imageUrl TEXT)");
   console.log("Table " + table_name + " initialized!");  
 });
 
