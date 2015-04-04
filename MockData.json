@@ -1,6 +1,6 @@
 {
   "mockdata": {
-    "pet": [
+    "pets": [
       {
         "id": 1,
         "name": "Fluffy",
