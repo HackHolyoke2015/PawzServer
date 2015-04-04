@@ -63,6 +63,21 @@ app.get('/',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
 });
 
+app.get('/jquery-1.11.2.min.js',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/jquery-1.11.2.min.js'));
+});
+
+app.get('/paws.css',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/paws.css'));
+});
+
+app.get('/main.js',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
+});
+
 
 app.get('/pets',function(req, res){
 	var db = new sqlite3.Database('./records.db');
