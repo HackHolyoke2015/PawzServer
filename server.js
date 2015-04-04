@@ -73,6 +73,11 @@ app.get('/jquery.min.js',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/jquery-1.11.2.min.js'));
 });
 
+app.get('/respond.min.js',function(req,res){
+	console.log("Getting jquery");
+	res.sendFile(path.join(__dirname + htmlPath + '/respond.min.js'));
+});
+
 app.get('/paws.css',function(req,res){
 	console.log("Getting paws.css");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/paws.css'));
