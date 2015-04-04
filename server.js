@@ -1,21 +1,25 @@
-var express = require("express");
-var app     = express();
-var path    = require("path");
+var express = require("express"),
+	app = express(),
+	path = require("path");
 
+var htmlPath = '/PawsClient/html';
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/index.html'));
-  //__dirname : It will resolve to your project folder.
+	console.log("Getting Index page");
+	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
+	//__dirname : It will resolve to your project folder.
 });
 
 app.get('/about',function(req,res){
-  res.sendFile(path.join(__dirname+'/about.html'));
+	console.log("Getting About page");
+	res.sendFile(path.join(__dirname + htmlPath + '/about.html'));
 });
 
 app.get('/sitemap',function(req,res){
-  res.sendFile(path.join(__dirname+'/sitemap.html'));
+	console.log("Getting Sitemap page");
+	res.sendFile(path.join(__dirname + htmlPath +'/sitemap.html'));
 });
 
-app.listen(3000);
+app.listen(80);
 
-console.log("Running at Port 3000");
+console.log("Running at Port 80");
