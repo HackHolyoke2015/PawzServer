@@ -78,13 +78,13 @@ app.get('/main.js',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
 });
 
-app.get('/pet', function(req, res){
+app.get('/pet/:id', function(req, res){
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
 
 	var json;
 	var pet = {};
-	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + currentIndex, function(err, rows) {  
+	db.all("SELECT name, imageUrl FROM " + table_name + " WHERE rowid =" + req.params.id, function(err, rows) {  
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
 		    pet.name = pet.name;
