@@ -61,7 +61,7 @@ app.get('/pets',function(req, res){
 	var images = [];
 	var i = 0;
 	var pet = {};
-	db.all("SELECT imageUrl FROM " + table_name, function(err, rows) {  
+	db.all("SELECT name, imageUrl FROM " + table_name, function(err, rows) {  
 		rows.forEach(function (row) {  
 		    //console.log(row.imageUrl);
 		    pet.name = pet.name;
