@@ -53,6 +53,34 @@ app.get('/images',function(req, res){
 	db.close();
 });
 
+app.get('/pets',function(req, res){
+	var db = new sqlite3.Database('./records.db');
+	console.log("Getting images");
+
+	var json;
+	var images = [];
+	var i = 0;
+	var pet = {};
+	db.all("SELECT imageUrl FROM " + table_name, function(err, rows) {  
+		rows.forEach(function (row) {  
+		    //console.log(row.imageUrl);
+		    pet.name = pet.name;
+		    pet.imageUrl = row.imageUrl;
+		    images[i] = pet;
+		    i++;
+		    //console.log("Url added to array");
+		});
+		json = JSON.stringify(rows);
+		console.log(rows.toString());
+		console.log(json);
+
+		res.type('text/plain');
+  		res.send(json);
+	});
+
+	db.close();
+});
+
 
 
 app.listen(80);
