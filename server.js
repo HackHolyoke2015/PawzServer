@@ -63,7 +63,7 @@ app.get('/',function(req,res){
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
 });
 
-app.get('pawz_home.html',function(req,res){
+app.get('/pawz_home.html',function(req,res){
 	console.log("Getting home page");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
 });
