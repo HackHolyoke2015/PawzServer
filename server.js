@@ -35,7 +35,7 @@ app.get('/images',function(req, res){
 		    images[i] = row.imageUrl;
 		    i++;
 		    console.log("Url added to array");
-		})
+		});
 		json = JSON.stringify(rows);
 	});
 
@@ -43,9 +43,11 @@ app.get('/images',function(req, res){
 
 });
 
+db.close();
+
 app.listen(80);
 
 
 console.log("Running at Port 80");
 
-db.close();
+
