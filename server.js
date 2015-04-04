@@ -110,7 +110,7 @@ app.get('/user/:id', function(req, res){
 
 app.get('/currentIndex',function(req, res){
 	console.log("Getting currentIndex");
-	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
+	res.send(currentIndex);
 });
 
 app.get('/pets',function(req, res){
