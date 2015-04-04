@@ -39,7 +39,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
             //var pet = data["mockdata"]["pets"][0];
             //console.log(pet);
-            db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
+            
             var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
             for (var i = 0; i < 10; i++) {
                 pet = pets[i];
@@ -70,7 +70,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
 db.serialize(function() {
   console.log("Database Serialization Initializing...");
-
+  db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
   console.log("Table " + table_name + " initialized!");  
 });
 
