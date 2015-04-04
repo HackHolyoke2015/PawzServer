@@ -7,11 +7,11 @@ var express = require("express"),
 var table_name = "pet_info";
 var htmlPath = '/PawzClient/html';
 
-app.get('/',function(req,res){
-	console.log("Getting Index page");
-	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
-	//__dirname : It will resolve to your project folder.
-});
+// app.get('/',function(req,res){
+// 	console.log("Getting Index page");
+// 	res.sendFile(path.join(__dirname + htmlPath +  '/index.html'));
+// 	//__dirname : It will resolve to your project folder.
+// });
 
 app.get('/about',function(req,res){
 	console.log("Getting About page");
@@ -57,6 +57,12 @@ app.get('/testPets',function(req,res){
 	console.log("Getting Test page");
 	res.sendFile(path.join(__dirname + htmlPath + '/testPets.html'));
 });
+
+app.get('/',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/pawss.html'));
+});
+
 
 app.get('/pets',function(req, res){
 	var db = new sqlite3.Database('./records.db');
