@@ -23,6 +23,11 @@ app.get('/sitemap',function(req,res){
 	res.sendFile(path.join(__dirname + htmlPath + '/sitemap.html'));
 });
 
+app.get('/test',function(req,res){
+	console.log("Getting Test page");
+	res.sendFile(path.join(__dirname + htmlPath + '/test.html'));
+});
+
 app.get('/images',function(req, res){
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
