@@ -44,36 +44,38 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
           console.log("ERROR: JSON parse - " + err);
       }
   }
-  console.log("JSON initialized!");
-});
+  console.log("JSON initialized!");\
 
-db.serialize(function() {
-  console.log("Database Serialization Initializing...");
+  db.serialize(function() {
+    console.log("Database Serialization Initializing...");
 
-  
+    
 
-  db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
-  var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
-  for (var i = 0; i < 10; i++) {
-      pet = pets[i];
-      id = pet.id;
-      name = pet.name;
-      url = pet.url;
-      console.log(i + ": id: " + id + ", name: " + ", url: " + url);
-      stmt.run(id, name, url);
-      console.log("Row inserted");
-  }
-  stmt.finalize();
-  
+    db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
+    var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
+    for (var i = 0; i < 10; i++) {
+        pet = pets[i];
+        id = pet.id;
+        name = pet.name;
+        url = pet.url;
+        console.log(i + ": id: " + id + ", name: " + ", url: " + url);
+        stmt.run(id, name, url);
+        console.log("Row inserted");
+    }
+    stmt.finalize();
+    
 
-  db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
-      console.log(row.id + ": " + row.info);
+    db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
+        console.log(row.id + ": " + row.info);
+    });
+
+    console.log("Table " + table_name + " initialized!");
+
+    
   });
-
-  console.log("Table " + table_name + " initialized!");
-
-  
 });
+
+
 
 
 
