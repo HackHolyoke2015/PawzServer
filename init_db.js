@@ -4,8 +4,26 @@ var path = require('path');
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database(':memory:');
-
 var json;
+
+var table_name = "user_info";
+
+db.serialize(function() {
+
+  db.run("CREATE TABLE if not exists " + table_name + " (info TEXT)");
+  var stmt = db.prepare("INSERT INTO " + table_name + " VALUES (?)");
+  for (var i = 0; i < 10; i++) {
+      stmt.run("Ipsum " + i);
+  }
+  stmt.finalize();
+
+  db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
+      console.log(row.id + ": " + row.info);
+  });
+
+  console.log("Table " + table_name + " initialized")
+});
+
 fs.readFile('./MockData.json', 'utf8', function (err, data) {
     if (err) {
         console.log("ERROR: JSON load - " + err);
@@ -44,3 +62,5 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
 
     }
 });
+
+db.close();
