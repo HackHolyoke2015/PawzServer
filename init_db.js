@@ -3,7 +3,7 @@ var utils = require('util');
 var path = require('path');
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database(':memory:');
+var db = new sqlite3.Database('records.db');
 var json;
 
 var table_name = "user_info";
@@ -83,4 +83,6 @@ db.serialize(function() {
 
 
 
-db.close();
+db.close(function() {
+  console.log("Database Closed");
+});
