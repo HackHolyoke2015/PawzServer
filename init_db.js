@@ -14,10 +14,7 @@ var id;
 var name;
 var url;
 
-
-
-db.serialize(function() {
-  fs.readFile('./MockData.json', 'utf8', function (err, data) {
+fs.readFile('./MockData.json', 'utf8', function (err, data) {
     console.log("JSON Initializing...");
     if (err) {
         console.log("ERROR: JSON load - " + err);
@@ -42,30 +39,35 @@ db.serialize(function() {
 
             //var pet = data["mockdata"]["pets"][0];
             //console.log(pet);
+            db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
+            var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
+            for (var i = 0; i < 10; i++) {
+                pet = pets[i];
+                id = pet.id;
+                name = pet.name;
+                url = pet.url;
+                console.log(i + ": id: " + id + ", name: " + ", url: " + url);
+                stmt.run(id, name, url);
+                console.log("Row inserted");
+            }
+            stmt.finalize();
+
         }
         catch (ex) {
             console.log("ERROR: JSON parse - " + err);
         }
     }
     console.log("JSON initialized!");
-  });
+});
+
+db.serialize(function() {
+
 
   console.log("Database Serialization Initializing...");
 
   
 
-  db.run("CREATE TABLE if not exists " + table_name + " (id INTEGER PRIMARY KEY, name TEXT, imageUrl TEXT)");
-  var stmt = db.prepare("INSERT INTO " + table_name + "(id,name,imageUrl) VALUES (?,?,?)");
-  for (var i = 0; i < 10; i++) {
-      pet = pets[i];
-      id = pet.id;
-      name = pet.name;
-      url = pet.url;
-      console.log(i + ": id: " + id + ", name: " + ", url: " + url);
-      stmt.run(id, name, url);
-      console.log("Row inserted");
-  }
-  stmt.finalize();
+  
   
 
   db.each("SELECT rowid AS id, info FROM " + table_name, function(err, row) {
