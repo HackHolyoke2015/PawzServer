@@ -15,6 +15,7 @@ var name;
 var url;
 
 fs.readFile('./MockData.json', 'utf8', function (err, data) {
+  console.log("JSON Initializing...");
   if (err) {
       console.log("ERROR: JSON load - " + err);
       throw err;
@@ -43,6 +44,7 @@ fs.readFile('./MockData.json', 'utf8', function (err, data) {
           console.log("ERROR: JSON parse - " + err);
       }
   }
+  console.log("JSON initialized!");
 });
 
 db.serialize(function() {
@@ -68,7 +70,7 @@ db.serialize(function() {
       console.log(row.id + ": " + row.info);
   });
 
-  console.log("Table " + table_name + " initialized");
+  console.log("Table " + table_name + " initialized!");
 
   
 });
