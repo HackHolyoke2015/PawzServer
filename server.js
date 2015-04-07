@@ -13,21 +13,6 @@ var currentIndex = 0;
 // 	//__dirname : It will resolve to your project folder.
 // });
 
-app.get('/about',function(req,res){
-	console.log("Getting About page");
-	res.sendFile(path.join(__dirname + htmlPath + '/about.html'));
-});
-
-app.get('/sitemap',function(req,res){
-	console.log("Getting Sitemap page");
-	res.sendFile(path.join(__dirname + htmlPath + '/sitemap.html'));
-});
-
-app.get('/test',function(req,res){
-	console.log("Getting Test page");
-	res.sendFile(path.join(__dirname + htmlPath + '/test.html'));
-});
-
 app.get('/images',function(req, res){
 	var db = new sqlite3.Database('./records.db');
 	console.log("Getting images");
@@ -51,11 +36,6 @@ app.get('/images',function(req, res){
 	});
 
 	db.close();
-});
-
-app.get('/testPets',function(req,res){
-	console.log("Getting Test page");
-	res.sendFile(path.join(__dirname + htmlPath + '/testPets.html'));
 });
 
 app.get('/',function(req,res){
@@ -86,11 +66,6 @@ app.get('/paws.css',function(req,res){
 app.get('/main.js',function(req,res){
 	console.log("Getting main.js");
 	res.sendFile(path.join(__dirname + '/PawzClient/NicoleClient' + '/main.js'));
-});
-
-app.get('/testPet',function(req,res){
-	console.log("Getting Pet");
-	res.sendFile(path.join(__dirname + htmlPath + '/testPet.html'));
 });
 
 app.get('/petDetails',function(req,res){
@@ -180,8 +155,6 @@ app.get('/pets',function(req, res){
 
 	db.close();
 });
-
-
 
 app.listen(80);
 
